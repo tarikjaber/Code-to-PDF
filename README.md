@@ -1,4 +1,4 @@
-# Code to PDF Generator
+# Code to PDF
 This project is a website that allows users to paste source code and generate a PDF file with highlighted syntax. It is built using JavaScript and the highlight.js library.
 
 ![Example use of Code to PDF](images/example.png)
