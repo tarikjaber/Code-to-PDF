@@ -7,7 +7,7 @@ This project is a website that allows users to paste source code and generate a 
 - Ability to select different themes and programming languages
 
 ## Usage
-1. Visit the website
+1. Visit [the website](https://tarikjaber.github.io/Code-to-PDF/)
 2. Paste your source code into the text box
 3. Select your desired theme and programming language
 4. Click the "Generate PDF" button to download your PDF file
