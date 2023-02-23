@@ -1,6 +1,6 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
 }
 
 select {
@@ -9,12 +9,12 @@ select {
 }
 
 h1 {
-    margin: 0;
-    padding-bottom: 20px;
-    color: white;
-    background-color: #222831;
-    padding: 20px;
-    margin: -20px -20px 20px -20px;
+  margin: 0;
+  padding-bottom: 20px;
+  color: white;
+  background-color: #222831;
+  padding: 20px;
+  margin: -20px -20px 20px -20px;
 }
 
 .options {
@@ -46,18 +46,19 @@ button {
 }
 
 button:active {
-  background-color: #5584AC;
+  background-color: #5584ac;
 }
 
 textarea {
-    padding: 10px;
-    margin-top: 20px;
-    resize: none;
-    flex-grow: 1;
-    border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  resize: none;
+  flex-grow: 1;
+  border-radius: 5px;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -69,48 +70,48 @@ html, body {
 }
 
 pre {
-    margin: 0;
+  margin: 0;
 }
 
 #code-container {
-    display: flex;
-    margin: 0 -20px;
-    font-family: 'Fira Code', monospace;
+  display: flex;
+  margin: 0 -20px;
+  font-family: 'Fira Code', monospace;
 }
 
 #document-title {
-    display: none;
+  display: none;
 }
 
 code {
-    font-size: 14px;
-    white-space: pre-wrap;
+  font-size: 14px;
+  white-space: pre-wrap;
 }
 
 #line-nums {
-    width: auto;
-    font-size: 14px;
-    padding-left: 11px;
-    padding-top: 13px;
-    padding-bottom: 4px;
-    display: inline-block;
+  width: auto;
+  font-size: 14px;
+  padding-left: 11px;
+  padding-top: 13px;
+  padding-bottom: 4px;
+  display: inline-block;
 }
 
 #code-div {
-    background-color: #c9d1d9;
-    border-radius: 5px;
-    width: auto;
-    flex: 1;
-    display: inline-block;
+  background-color: #c9d1d9;
+  width: auto;
+  flex: 1;
+  display: inline-block;
 }
 
 #code {
-    margin-left: 2px;
+  margin-left: 2px;
+  padding-bottom: 22px;
 }
 
 #print-area {
-    padding: 20px;
-    display: none;
+  padding: 20px;
+  /*display: none;*/
 }
 
 a {
@@ -119,29 +120,29 @@ a {
 }
 
 @media print {
-    body {
-        color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-    }
+  body {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
 
-    #document-title {
-        margin-bottom: 20px;
-    }
+  #document-title {
+    margin-bottom: 20px;
+  }
 
-    #print-area {
-        display: block;
-    }
+  #print-area {
+    display: block;
+  }
 
-    #code-container {
-        margin-top: -20px;
-    }
+  #code-container {
+    margin-top: -20px;
+  }
 
-    .hide-from-print {
-        display: none;
-    }
+  .hide-from-print {
+    display: none;
+  }
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
