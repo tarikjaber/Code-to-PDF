@@ -26,7 +26,7 @@ updateLineNumbers();
 hljs.configure({
     languages: ['java', 'javascript', 'html', 'typescript', 'cpp']
 });
-hljs.highlightBlock(code);
+hljs.highlightElement(code);
 code.classList.add(`language-${selectedLanguage}`);
 code.classList.add('hljs');
 documentNameInput.addEventListener('input', () => {
@@ -52,7 +52,7 @@ codeTextArea.addEventListener('input', () => {
         localStorage.setItem('code', '');
         updateLineNumbers();
     }
-    hljs.highlightBlock(code);
+    hljs.highlightElement(code);
 });
 function updateLineNumbers() {
     let lines = codeTextArea.value.split('\n');
@@ -78,13 +78,13 @@ languageSelector.addEventListener('change', () => {
     selectedLanguage = languageSelector.value.replace("<", "&lt;").replace(">", "&gt;");
     code.classList.add(`language-${selectedLanguage}`);
     localStorage.setItem('language', selectedLanguage);
-    hljs.highlightBlock(code);
+    hljs.highlightElement(code);
 });
 themeSelector.addEventListener('change', () => {
     themeStylesheet.href = getStylesheet(themeSelector.value);
     documentTitle.innerHTML = documentNameInput.value;
     localStorage.setItem('theme', themeSelector.value);
-    hljs.highlightBlock(code);
+    hljs.highlightElement(code);
 });
 function getStylesheet(style) {
     return `//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/${style}.min.css`;
