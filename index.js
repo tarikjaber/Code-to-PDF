@@ -1,97 +1,93 @@
-let printBtn = document.getElementById('print');
-let codeTextArea = document.getElementsByTagName('textarea')[0];
-let code = document.getElementById('code');
-let documentNameInput = document.getElementById('document-name-input');
-let documentTitle = document.getElementById('document-title');
-let languageSelector = document.getElementById('languages');
-let codeLines = document.getElementById('line-nums');
-let themeStylesheet = document.getElementById('theme-style');
-let themeSelector = document.getElementById('themes');
-let selectedLanguage = 'javascript';
-let selectedTheme = 'default';
-let codeText = 'console.log("Hello World")';
-selectedTheme = localStorage.getItem('theme') ?? 'github-dark';
+const printBtn = document.getElementById('print');
+const codeTextArea = document.getElementsByTagName('textarea')[0];
+const code = document.getElementById('code');
+const documentNameInput = document.getElementById('document-name-input');
+const documentTitle = document.getElementById('document-title');
+const languageSelector = document.getElementById('languages');
+const codeLines = document.getElementById('line-nums');
+const themeStylesheet = document.getElementById('theme-style');
+const themeSelector = document.getElementById('themes');
+let selectedLanguage = localStorage.getItem('language') || 'javascript';
+let selectedTheme = localStorage.getItem('theme') || 'github-dark';
+let codeText = localStorage.getItem('code') || 'console.log("Hello World")';
+
+// Set up the initial state
 themeStylesheet.setAttribute('href', getStylesheet(selectedTheme));
 themeSelector.value = selectedTheme;
-code.classList.remove(`language-${selectedLanguage}`);
-selectedLanguage = localStorage.getItem('language') ?? 'javascript';
-code.classList.add(`language-${selectedLanguage}`);
-languageSelector.value = selectedLanguage;
-themeStylesheet.setAttribute('href', getStylesheet(selectedTheme));
-codeText = localStorage.getItem('code') ?? 'console.log("Hello World")';
-localStorage.setItem('code', codeText);
-codeTextArea.value = codeText;
+code.classList.add('hljs', `language-${selectedLanguage}`);
 code.innerHTML = escape(codeText);
+codeTextArea.value = codeText;
+languageSelector.value = selectedLanguage;
+documentTitle.innerHTML = documentNameInput.value || 'Untitled';
 updateLineNumbers();
 hljs.configure({
     languages: ['java', 'javascript', 'html', 'typescript', 'cpp']
 });
 hljs.highlightElement(code);
-code.classList.add(`language-${selectedLanguage}`);
-code.classList.add('hljs');
+
+// Attach event listeners
 documentNameInput.addEventListener('input', () => {
-    documentTitle.innerHTML = documentNameInput.value;
+    documentTitle.innerHTML = documentNameInput.value || 'Untitled';
 });
+
 printBtn.addEventListener('click', () => {
-    console.log("Print button clicked.");
-    document.title = documentTitle.textContent ?? "code.pdf";
+    console.log('Print button clicked.');
+    document.title = documentTitle.textContent || 'code.pdf';
     window.print();
-    document.title = "Code Formatter";
+    document.title = 'Code Formatter';
 });
-function escape(s) {
-    return s.replace(/[^0-9A-Za-z ]/g, c => "&#" + c.charCodeAt(0) + ";");
-}
+
 codeTextArea.addEventListener('input', () => {
-    if (codeTextArea.value !== '') {
-        localStorage.setItem('code', codeTextArea.value);
-        code.innerHTML = escape(codeTextArea.value);
-        updateLineNumbers();
-    }
-    else {
-        code.innerHTML = "";
-        localStorage.setItem('code', '');
-        updateLineNumbers();
-    }
+    codeText = codeTextArea.value;
+    localStorage.setItem('code', codeText);
+    code.innerHTML = escape(codeText);
+    updateLineNumbers();
     hljs.highlightElement(code);
 });
-function updateLineNumbers() {
-    let lines = codeTextArea.value.split('\n');
-    if (lines[lines.length - 1] === '') {
-        code.style.paddingBottom = "31px";
-    }
-    else {
-        code.style.paddingBottom = "14px";
-    }
-    let numLines = lines.length;
-    let numLinesDigits = numLines.toString().length;
-    codeLines.innerHTML = "";
-    for (let i = 0; i < numLines; i++) {
-        codeLines.innerHTML += `<pre>${(i + 1).toString().padStart(numLinesDigits)} </pre>`;
-        for (let j = 0; j < (lines[i].length) / 98 - 1; j++) {
-            codeLines.innerHTML += `<pre>${"".padStart(numLinesDigits)} </pre>`;
-        }
-    }
-    codeLines.classList.add("hljs");
-}
+
 languageSelector.addEventListener('change', () => {
     code.classList.remove(`language-${selectedLanguage}`);
-    selectedLanguage = languageSelector.value.replace("<", "&lt;").replace(">", "&gt;");
-    code.classList.add(`language-${selectedLanguage}`);
+    selectedLanguage = languageSelector.value;
     localStorage.setItem('language', selectedLanguage);
+    code.classList.add(`language-${selectedLanguage}`);
     hljs.highlightElement(code);
 });
+
 themeSelector.addEventListener('change', () => {
-    themeStylesheet.href = getStylesheet(themeSelector.value);
-    documentTitle.innerHTML = documentNameInput.value;
-    localStorage.setItem('theme', themeSelector.value);
+    selectedTheme = themeSelector.value;
+    themeStylesheet.href = getStylesheet(selectedTheme);
+    localStorage.setItem('theme', selectedTheme);
     hljs.highlightElement(code);
+    documentTitle.innerHTML = documentNameInput.value || 'Untitled';
 });
-function getStylesheet(style) {
-    return `//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/${style}.min.css`;
-}
+
 window.addEventListener('beforeprint', event => {
     document.body.classList.add('hljs');
 });
+
 window.addEventListener('afterprint', event => {
     document.body.classList.remove('hljs');
 });
+
+// Helper functions
+function escape(s) {
+    return s.replace(/[^0-9A-Za-z ]/g, c => `&#${c.charCodeAt(0)};`);
+}
+
+function updateLineNumbers() {
+    const lines = codeTextArea.value.split('\n');
+    const numLines = lines.length;
+    const numLinesDigits = numLines.toString().length;
+    let html = '';
+    for (let i = 0; i < numLines; i++) {
+        html += `<pre>${(i + 1).toString().padStart(numLinesDigits)} </pre>`;
+        for (let j = 0; j < lines[i].length / 98 - 1; j++) {
+            html += `<pre>${''.padStart(numLinesDigits)} </pre>`;
+        }
+    }
+    codeLines.innerHTML = html;
+}
+
+function getStylesheet(style) {
+    return `//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/${style}.min.css`;
+}
