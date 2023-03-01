@@ -111,7 +111,7 @@ code {
 
 #print-area {
   padding: 20px;
-  /*display: none;*/
+  display: none;
 }
 
 a {
@@ -155,3 +155,19 @@ p {
   float: right;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
