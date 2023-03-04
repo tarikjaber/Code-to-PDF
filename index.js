@@ -12,6 +12,12 @@ let selectedTheme = localStorage.getItem('theme') || 'github-dark';
 let codeText = localStorage.getItem('code') || 'console.log("Hello World")';
 
 // Set up the initial state
+document.addEventListener('securitypolicyviolation', function (event) {
+    if (event.violatedDirective === 'expect-ct') {
+        event.preventDefault();
+    }
+});
+
 themeStylesheet.setAttribute('href', getStylesheet(selectedTheme));
 themeSelector.value = selectedTheme;
 code.classList.add('hljs', `language-${selectedLanguage}`);
