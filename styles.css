@@ -38,16 +38,26 @@ input {
 
 button {
   border-width: 0;
-  background-color: #006ed9;
+  background-color: #487eb0;
   color: white;
+  max-width: 100px;
+  font-weight: bold;
   padding: 6px;
   min-width: 120px;
   border-radius: 5px;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #40739e;
+  cursor: pointer;
 }
 
 button:active {
-  background-color: #5584ac;
+  transform: scale(0.95);
+  background-color: #0077b6;
 }
+
 
 textarea {
   padding: 10px;
@@ -74,27 +84,41 @@ pre {
 }
 
 #code-container {
-  display: flex;
-  margin: 0 -20px;
+  margin: 0;
+  max-width: 100%;
+}
+
+#code-container .code-line:first-of-type .line-number {
+  padding-top: 10px;
+  border-top-left-radius: 10px;
+}
+
+#code-container .code-line:last-of-type .line-number {
+  padding-bottom: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#code-container .code-line:first-of-type #code {
+  padding-top: 10px;
+  border-top-right-radius: 10px;
+}
+
+#code-container .code-line:last-of-type #code {
+  padding-bottom: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#code {
+  font-size: 14px;
   font-family: 'Fira Code', monospace;
-}
-
-#document-title {
-  display: none;
-}
-
-code {
-  font-size: 14px;
   white-space: pre-wrap;
+  padding: 0px 11px;
+  flex-grow: 1;
 }
 
-#line-nums {
-  width: auto;
-  font-size: 14px;
-  padding-left: 11px;
-  padding-top: 13px;
-  padding-bottom: 4px;
+.code-pre {
   display: inline-block;
+  flex-grow: 1;
 }
 
 #code-div {
@@ -104,13 +128,23 @@ code {
   display: inline-block;
 }
 
-#code {
-  margin-left: 2px;
-  padding-bottom: 22px;
+.code-line {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  display: flex;
+}
+
+.line-number {
+  padding: 0px 11px;
+  user-select: none;
+  background-color: #454545;
+  color: white;
+  white-space: pre;
 }
 
 #print-area {
-  padding: 20px;
+  padding: 0;
+  padding-top: 20px;
   display: none;
 }
 
@@ -125,16 +159,16 @@ a {
     -webkit-print-color-adjust: exact;
   }
 
+  .line-number {
+    user-select: none;
+  }
+
   #document-title {
     margin-bottom: 20px;
   }
 
   #print-area {
     display: block;
-  }
-
-  #code-container {
-    margin-top: -20px;
   }
 
   .hide-from-print {
@@ -161,12 +195,10 @@ p {
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

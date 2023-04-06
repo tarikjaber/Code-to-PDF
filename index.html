@@ -83,16 +83,17 @@
       </select>
       <button id="print">Print</button>
     </div>
-    <textarea placeholder="Enter code ..."></textarea>
+    <textarea spellcheck="false" placeholder="Enter code ..."></textarea>
   </div>
   <div id="print-area">
-    <h1 id="document-title">Code</h1>
     <div id="code-container">
-      <div id="line-nums" class="hljs">
-        <pre>1 </pre>
+      <div class="code-line">
+        <span class="line-number">1</span>
+        <pre class="code-pre"><code id="code">console.log("Hello World!");</code></pre>
       </div>
-      <div id="code-div">
-        <pre><code id="code">console.log("Hello World!");</code></pre>
+      <div class="code-line">
+        <span class="line-number">2</span>
+        <pre class="code-pre"><code id="code">console.log("Hello World!");</code></pre>
       </div>
     </div>
   </div>
