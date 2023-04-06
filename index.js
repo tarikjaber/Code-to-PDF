@@ -30,13 +30,16 @@ printBtn.addEventListener('click', () => {
     updateCode();
     let optGroup = themeSelector.options[themeSelector.selectedIndex].parentNode;
     const lineNumbers = document.querySelectorAll('.line-number');
+    const root = document.documentElement;
 
     if (optGroup.label === 'Dark') {
+        root.style.setProperty('--border-thickness', '0px');
         for (let i = 0; i < lineNumbers.length; i++) {
             lineNumbers[i].style.backgroundColor = '#353b48';
             lineNumbers[i].style.color = '#dfe6e9';
         }
     } else {
+        root.style.setProperty('--border-thickness', '1px');
         for (let i = 0; i < lineNumbers.length; i++) {
             lineNumbers[i].style.backgroundColor = '#dcdde1';
             lineNumbers[i].style.color = '#2d3436';
