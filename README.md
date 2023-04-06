@@ -5,6 +5,7 @@ Code to PDF is a website that allows users to paste source code and generate a P
 ## TODO
 - [ ] Add lines for white theme to better see outline
 - [ ] Improve button colors and sizing
+- [ ] Add icon for website
 
 ## Features
 - Text box to paste source code
