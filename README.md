@@ -18,14 +18,3 @@ Code to PDF is a website that allows users to paste source code and generate a P
 3. Select your desired theme and programming language
 4. Click the "Generate PDF" button to download your PDF file
 
-## Contributing
-This project is open for contributions. If you would like to contribute, please follow these steps:
-
-1. Fork the repository
-2. Create your feature branch (git checkout -b feature/[feature_name])
-3. Commit your changes (git commit -m 'Add [feature_name]')
-4. Push to the branch (git push origin feature/[feature_name])
-5. Open a pull request
-
-## License
-This project is licensed under the MIT License.
