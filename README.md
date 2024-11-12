@@ -18,3 +18,8 @@ Code to PDF is a website that allows users to paste source code and generate a P
 3. Select your desired theme and programming language
 4. Click the "Generate PDF" button to download your PDF file
 
+## Analytics
+This site uses [counter.dev](https://counter.dev/) for
+analytics. You view analytics for the site 
+[here](https://counter.dev/dashboard.html?user=tarikjaber&token=oFh7AcrH-q0%3D).
+
