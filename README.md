@@ -9,7 +9,7 @@ Code to PDF is a website that allows users to paste source code and generate a P
 
 ## Features
 - Text box to paste source code
-- Syntax highlighting using the highlight.js library
+- Syntax highlighting using the [highlight.js](https://highlightjs.org/) library
 - Ability to select different themes and programming languages
 
 ## Usage
